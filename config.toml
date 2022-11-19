@@ -1,0 +1,31 @@
+baseURL = 'https://charlesthomas.dev/'
+languageCode = 'en-us'
+title = "👨‍💻"
+theme = "blackburn"
+author = "Charles Thomas"
+copyright = "&copy; 2022. All rights reserved."
+canonifyurls = true
+paginate = 10
+[params]
+subtitle = "charlesthomas.dev"
+
+[menu]
+  # Shown in the side menu.
+  [[menu.main]]
+    name = "📓 Home"
+    weight = 1
+    identifier = "home"
+    url = "/"
+  [[menu.main]]
+    name = "🧔🏻‍♂️ About"
+    weight = 2
+    identifier = "about"
+    url = "/about/"
+  [[menu.main]]
+    name = " Helper Apps"
+    weight = 3
+    url = "/macos-helpers/"
+  [[menu.main]]
+    name = "🖥️ Thomas' Law"
+    weight = 4
+    url = "/law/"
