@@ -1,7 +1,12 @@
 ---
-title: "macOS Helper Apps"
-date: 2022-11-19T15:01:56-05:00
+title: " macOS Helper Apps"
+date: 2022-11-20T11:24:50-05:00
+tags:
+  - macos-helpers
+  - recommendations
 ---
+
+> This page may be one of several, as these apps fall in and out of favor. [All iterations are here](/tags/macos-helpers).
 
 I have been using macOS for the better part of a decade, and over that time I’ve found several little helper apps that I don’t think I could function without.
 I also recommend them to people frequently, so I compiled a list for faster linking.

@@ -24,7 +24,7 @@ subtitle = "charlesthomas.dev"
   [[menu.main]]
     name = " Helper Apps"
     weight = 3
-    url = "/macos-helpers/"
+    url = "/post/macos-helpers-2022-11-20"
   [[menu.main]]
     name = "🖥️ Thomas' Law"
     weight = 4
