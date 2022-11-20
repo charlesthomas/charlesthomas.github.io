@@ -2,6 +2,8 @@
 title: " macOS Helper Apps"
 date: 2022-11-20T11:24:50-05:00
 tags:
+  - apple
+  - macos
   - macos-helpers
   - recommendations
 ---
