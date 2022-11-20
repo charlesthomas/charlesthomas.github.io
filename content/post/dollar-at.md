@@ -267,4 +267,19 @@ ${debug}kubectl $cmd
 ```
 
 ---
-I have not made my dotfiles public in quite some time. I plan to in the near future since I'm actively blogging again. Hopefully [this dotfiles repo](https://github.com/charlesthomas/dotfiles) will start getting commits soon, and you can clone the repo instead of copy/pasting out of this post if you want to steal any of these scripts.
+I have not made my dotfiles public in quite some time, because I couldn't find a solution I liked that could keep most of it public without worrying about accidentally leaking company-internal things.
+I just created [this dotfiles repo](https://github.com/charlesthomas/dotfiles) which contains all three scripts in this post, as well as `examples/demo-args` which just shows you the various bash argument variables available based on how you run it.
+
+Example:
+
+```bash
+$ examples/demo-args a b c
+
+$0: examples/demo-args
+$@: a b c
+$#: 3
+---
+$1: a
+$2: b
+$3: c
+```
