@@ -1,11 +1,18 @@
 .DEFAULT_GOAL: build-and-serve
-.PHONY: build build-and-serve help page post serve
+.PHONY: aws build build-and-serve help page pipx post serve
 .SILENT: help page post
 
+AWS_CMD = aws --profile personal
 HUGO_VERSION ?= 0.109.0
 HUGO_URL ?= https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_$(HUGO_VERSION)_darwin-universal.tar.gz
+PIPX_VENV_ROOT := $(shell pipx environment | grep PIPX_LOCAL_VENVS= | cut -d = -f 2)
+S3_URL_ROOT = http://charlesthomas.dev.s3-website.us-east-2.amazonaws.com
+STATIC_LOCAL = static/
+STATIC_S3 = s3://charlesthomas.dev/static
 
 build-and-serve: build serve ## hugo && hugo serve [DEFAULT]
+
+aws: | $(PIPX_VENV_ROOT)/awscli/bin/aws
 
 build: | hugo themes/blackburn/theme.toml ## run hugo
 	./hugo
@@ -40,9 +47,23 @@ page: ## create a new page at the content root
 	read -p "title: " title; \
 	make content/$${title}.md
 
+pipx: | ${HOMEBREW_PREFIX}/bin/pipx
+
 post: ## create a new post in content/post/
 	read -p "title: " title; \
 	make content/post/$${title}-$$(date +%F).md
 
+static-download: | aws ## download static/ from s3
+	$(AWS_CMD) s3 sync $(STATIC_S3) $(STATIC_LOCAL)
+
+static-upload: | aws ## sync local static/ to s3
+	$(AWS_CMD) s3 sync --exclude .DS_Store $(STATIC_LOCAL) $(STATIC_S3)
+
 themes/blackburn/theme.toml:
 	git submodule update
+
+$(PIPX_VENV_ROOT)/awscli/bin/aws:
+	pipx install awscli
+
+${HOMEBREW_PREFIX}/bin/pipx:
+	brew install pipx
