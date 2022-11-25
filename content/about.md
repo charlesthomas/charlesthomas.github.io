@@ -4,6 +4,8 @@ date: 2022-11-19T14:50:38-05:00
 draft: false
 ---
 
+![](http://charlesthomas.dev.s3-website.us-east-2.amazonaws.com/static/me/mohawk.jpeg)
+
 I'm currently a Release Engineer at Mezmo (LogDNA),
 
 [but I've worn many hats in my career. 🤠](https://github.com/charlesthomas/resume)

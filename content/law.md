@@ -6,4 +6,4 @@ draft: false
 
 ## Given n monitors, the number of needed monitors is n+1
 
-![](/memes/dualies.webp)
+![](http://charlesthomas.dev.s3-website.us-east-2.amazonaws.com/static/memes/dualies.webp)
