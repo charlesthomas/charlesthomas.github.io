@@ -4,7 +4,9 @@ date: 2022-11-19T14:50:38-05:00
 draft: false
 ---
 
-I'm currently a Release Engineer at Mezmo (LogDNA),
+{{< image src="me/mohawk.jpeg" alt="me from def con 23 with a green mohawk" >}}
+
+I'm currently a Release Engineer at Mezmo (formerly LogDNA),
 
 [but I've worn many hats in my career. 🤠](https://github.com/charlesthomas/resume)
 

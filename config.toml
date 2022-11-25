@@ -1,11 +1,21 @@
-baseURL = 'https://charlesthomas.dev/'
-languageCode = 'en-us'
-title = "👨‍💻"
-theme = "blackburn"
 author = "Charles Thomas"
-copyright = "&copy; 2022. All rights reserved."
+baseURL = 'https://charlesthomas.dev/'
 canonifyurls = true
+copyright = "&copy; 2022. All rights reserved."
+languageCode = 'en-us'
 paginate = 10
+theme = "blackburn"
+title = "👨‍💻"
+
+[permalinks]
+  post = "/:title-:year-:month-:day/"
+
+[deployment]
+
+[[deployment.targets]]
+name="static"
+URL="s3://charlesthomas.dev/static/?region=us-east-2"
+
 [params]
 subtitle = "charlesthomas.dev"
 
