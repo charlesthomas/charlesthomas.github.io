@@ -15,6 +15,7 @@ serve: | hugo ## run server for testing
 
 clean: ## clean public/
 	-rm -rf public/
+	-rm .hugo_build.lock
 
 clean-all: clean ## clean hugo binary & themes submodule
 	-rm hugo

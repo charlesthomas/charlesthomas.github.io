@@ -1,0 +1,24 @@
+<!-- Get src param from shortcode -->
+{{ $src := $.Get "src"}}
+{{ $image := .Page.Resources.GetMatch (.Get "src") }}
+{{ $local := path.Join "static" $src }}
+{{ $s3 := printf "https://s3.us-east-2.amazonaws.com/charlesthomas.dev/static/%s" $src }}
+
+
+<!-- Get alt param from shortcode -->
+{{ $alt := $.Get "alt"}}
+
+{{- /* This shortcode create img tag with lazy loading
+Params:
+- "src" : relative path of image in directory "static/"
+*/ -}}
+{{- with .Get "src" }}
+{{- $src := . }}
+{{ if fileExists $local }}
+<img class="img-fluid" src="{{ $src | absURL }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+{{ else }}
+<img class="img-fluid" src="{{ $s3 }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+{{ end }}
+{{- else }}
+{{- errorf "missing value for param 'name': %s" .Position }}
+{{- end }}
