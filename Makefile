@@ -29,11 +29,11 @@ clean-all: clean ## clean hugo binary & themes submodule
 
 content/%.md: | hugo
 	./hugo new $(*).md
-	vim content/$(*).md
+	code content/$(*).md
 
 content/post/%.md: | hugo
 	./hugo new post/$(*).md
-	vim content/post/$(*).md
+	code content/post/$(*).md
 
 .git/hooks/%:
 	cp etc/git-hooks/$(*) $(@)
