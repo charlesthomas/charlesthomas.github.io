@@ -1,5 +1,5 @@
 .DEFAULT_GOAL: build-and-serve
-.PHONY: aws build build-and-serve help page pipx post serve
+.PHONY: aws build build-and-serve clean clean-all help page pipx post serve static-download static-upload
 .SILENT: help page post
 
 AWS_CMD = aws --profile personal
@@ -14,11 +14,8 @@ build-and-serve: build serve ## hugo && hugo serve [DEFAULT]
 
 aws: | $(PIPX_VENV_ROOT)/awscli/bin/aws
 
-build: | hugo themes/blackburn/theme.toml ## run hugo
+build: | hugo themes/blackburn/theme.toml static-download ## run hugo
 	./hugo
-
-serve: | hugo ## run server for testing
-	./hugo serve
 
 clean: ## clean public/
 	-rm -rf public/
@@ -52,6 +49,9 @@ pipx: | ${HOMEBREW_PREFIX}/bin/pipx
 post: ## create a new post in content/post/
 	read -p "title: " title; \
 	make content/post/$${title}-$$(date +%F).md
+
+serve: | hugo ## run server for testing
+	./hugo serve
 
 static-download: | aws ## download static/ from s3
 	$(AWS_CMD) s3 sync $(STATIC_S3) $(STATIC_LOCAL)
