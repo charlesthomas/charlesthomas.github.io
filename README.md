@@ -26,7 +26,7 @@ It's built by static site generator [hugo](https://gohugo.io), with the [blackbu
 
 ## `make page`
 
-- does the same thing, but for a new page
+- does the same thing as `make post`, but for a new page
 
 ## `make static-upload`
 
