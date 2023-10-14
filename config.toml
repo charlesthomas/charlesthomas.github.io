@@ -8,7 +8,7 @@ theme = "blackburn"
 title = "👨‍💻"
 
 [permalinks]
-  post = "/:title-:year-:month-:day/"
+  post = "/blog/:title-:year-:month-:day/"
 
 [deployment]
 
