@@ -137,9 +137,15 @@ Second, I may end up pushing to this branch several times before getting it righ
           echo "tag=$(date +%F-%H-%M-%S)-draft" >> "$GITHUB_ENV"
 ```
 
+Not only that, but I don't actually want draft tags in the git history.
+It turns out if you're making a draft GitHub Release, you don't need the tag.
+By leaving the `push tag` step described above out of the draft Workflow, I still get a draft Release, but I don't leave any extra tags lying around to clean up later.
+
 Finally, I **definitely** don't want someone trying to access the latest version of my resume to end up downloading one of these drafts.
 The `gh` cli supports a `--draft` flag which will do all the things `gh release create` already does, but without changing what `latest` redirects to.
-Additionally, the release that gets created is flagged as a "Draft".
+The release that gets created is flagged as a "Draft".
+
+{{< image src="screenshots/github-draft-release.png" alt="screenshot of the GitHub Release page showing the special Draft label" >}}
 
 ```yaml
       - name: publish release
@@ -150,5 +156,24 @@ Additionally, the release that gets created is flagged as a "Draft".
 ```
 
 Once I have a copy I like, I can merge the `draft` branch into `main` and those changes will be published as a real release and update `latest`.
-Currently there is some manual cleanup required to delete all the draft Releases and tags.
-In the future I may take the time to have the `on main` workflow clean those up for me every time I merge, but I'm not sure the effort is worth it at this time.
+
+**UPDATE 2023-10-15**
+
+The original closing paragraph mentioned needing manual cleanup after pushing to the `draft` branch:
+
+> Currently there is some manual cleanup required to delete all the draft Releases and tags. In the future I may take the time to have the on main workflow clean those up for me every time I merge, but I’m not sure the effort is worth it at this time.
+
+It turns out that cleaning this up is fairly simple.
+This is because a Draft GitHub Release doesn't actually need a git tag.
+By simply deleting the `push tag` step described above from the draft Workflow, I still get a Draft Release I can download the PDF from, but there are no lingering git tags to manually delete.
+
+Also, via the `gh` cli you can list and delete releases. Appending a single line to the end of the main Workflow auto-cleans up all Draft Releases when you push to main:
+
+```yaml
+- name: publish release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create $tag Charles-Thomas-Resume.pdf
+          gh release list --limit 999 | grep Draft | cut -f 1 | xargs gh release delete
+```
