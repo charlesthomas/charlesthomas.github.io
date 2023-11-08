@@ -3,7 +3,7 @@
 .SILENT: help page post
 
 AWS_CMD = aws --profile personal
-HUGO_VERSION ?= 0.109.0
+HUGO_VERSION ?= 0.120.4
 HUGO_URL ?= https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_$(HUGO_VERSION)_darwin-universal.tar.gz
 PIPX_VENV_ROOT := $(shell pipx environment | grep PIPX_LOCAL_VENVS= | cut -d = -f 2)
 S3_URL_ROOT = http://charlesthomas.dev.s3-website.us-east-2.amazonaws.com
