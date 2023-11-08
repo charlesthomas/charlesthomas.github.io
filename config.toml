@@ -7,17 +7,10 @@ paginate = 10
 theme = "blackburn"
 title = "👨‍💻"
 
-[permalinks]
-  post = "/blog/:title-:year-:month-:day/"
-
 [deployment]
-
-[[deployment.targets]]
-name="static"
-URL="s3://charlesthomas.dev/static/?region=us-east-2"
-
-[params]
-subtitle = "charlesthomas.dev"
+  [[deployment.targets]]
+    name="static"
+    URL="s3://charlesthomas.dev/static/?region=us-east-2"
 
 [menu]
   # Shown in the side menu.
@@ -39,3 +32,24 @@ subtitle = "charlesthomas.dev"
     name = "🖥️ Thomas' Law"
     weight = 4
     url = "/law/"
+
+[outputs]
+home = ["HTML", "humans", "robots"]
+
+
+  [outputFormats]
+    [outputFormats.humans]
+      baseName = "humans"
+      isPlainText = true
+      mediaType = "text/plain"
+
+    [outputFormats.robots]
+      baseName = "robots"
+      isPlainText = true
+      mediaType = "text/plain"
+
+[params]
+subtitle = "charlesthomas.dev"
+
+[permalinks]
+  post = "/blog/:title-:year-:month-:day/"
