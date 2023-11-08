@@ -1,8 +1,9 @@
 <!-- Get src param from shortcode -->
-{{ $src := $.Get "src"}}
+{{ $src := $.Get "src" }}
 {{ $image := .Page.Resources.GetMatch (.Get "src") }}
 {{ $local := path.Join "static" $src }}
 {{ $s3 := printf "https://s3.us-east-2.amazonaws.com/charlesthomas.dev/static/%s" $src }}
+{{ $width := $.Get "width" }}
 
 
 <!-- Get alt param from shortcode -->
@@ -14,11 +15,14 @@ Params:
 */ -}}
 {{- with .Get "src" }}
 {{- $src := . }}
-{{ if fileExists $local }}
-<img class="img-fluid" src="{{ $src | absURL }}" alt="{{ $alt }}" loading="lazy" decoding="async">
-{{ else }}
-<img class="img-fluid" src="{{ $s3 }}" alt="{{ $alt }}" loading="lazy" decoding="async">
-{{ end }}
+<img class="img-fluid"
+    {{ if $width }} width="{{ $width }}" {{end }}
+    {{ if fileExists $local }}
+        src="{{ $src | absURL }}"
+    {{ else }}
+        src="{{ $s3 }}"
+    {{ end }}
+ alt="{{ $alt }}" loading="lazy" decoding="async">
 {{- else }}
 {{- errorf "missing value for param 'name': %s" .Position }}
 {{- end }}
