@@ -58,7 +58,7 @@ post: ## create a new post in content/post/
 	make content/post/$$(date +%F)-$${title}.md
 
 serve: | hugo ## run server for testing
-	./hugo serve
+	./hugo serve --disableFastRender
 
 static-download: | aws ## download static/ from s3
 	$(AWS_CMD) s3 sync $(STATIC_S3) $(STATIC_LOCAL)
