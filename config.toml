@@ -27,7 +27,7 @@ title = "👨‍💻"
   [[menu.main]]
     name = " Helper Apps"
     weight = 3
-    url = "/tags/macos-helpers/"
+    url = "/categories/helpers/"
   [[menu.main]]
     name = "🖥️ Thomas' Law"
     weight = 4
