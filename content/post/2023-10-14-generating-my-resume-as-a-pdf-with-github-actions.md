@@ -175,5 +175,7 @@ Also, via the `gh` cli you can list and delete releases. Appending a single line
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create $tag Charles-Thomas-Resume.pdf
-          gh release list --limit 999 | grep Draft | cut -f 1 | xargs gh release delete
+          for draft in $(gh release list --limit 999 | grep Draft | cut -f 1); do \
+            gh release delete $draft; \
+          done
 ```
