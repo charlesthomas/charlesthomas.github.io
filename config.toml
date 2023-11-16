@@ -49,6 +49,7 @@ home = ["HTML", "humans", "robots"]
       mediaType = "text/plain"
 
 [params]
+disable_mathjax = true
 subtitle = "charlesthomas.dev"
 
 [permalinks]
