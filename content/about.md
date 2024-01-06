@@ -6,7 +6,7 @@ draft: false
 
 {{< image src="me/mohawk.jpeg" alt="me from def con 23 with a green mohawk" >}}
 
-I'm currently a Release Engineer at Mezmo (formerly LogDNA),
+I'm currently a Platform Engineer at InfluxData
 
 [but I've worn many hats in my career. 🤠](https://github.com/charlesthomas/resume)
 
