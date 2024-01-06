@@ -38,7 +38,7 @@ title = "👨‍💻"
     url = "/law/"
 
 [outputs]
-home = ["HTML", "humans", "robots"]
+home = ["HTML", "RSS", "humans", "robots"]
 
 
   [outputFormats]
