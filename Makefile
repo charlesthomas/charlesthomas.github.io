@@ -55,6 +55,7 @@ pipx: | ${HOMEBREW_PREFIX}/bin/pipx
 
 post: ## create a new post in content/post/
 	read -p "title: " title; \
+	title=$(echo $${title} | sed 's/ /-/g'); \
 	make content/post/$$(date +%F)-$${title}.md
 
 serve: | hugo ## run server for testing
