@@ -38,7 +38,7 @@ title = "👨‍💻"
     url = "/law/"
 
 [outputs]
-home = ["HTML", "RSS", "humans", "robots"]
+home = ["HTML", "RSS", "humans", "robots", "ai"]
 
 
   [outputFormats]
@@ -49,6 +49,11 @@ home = ["HTML", "RSS", "humans", "robots"]
 
     [outputFormats.robots]
       baseName = "robots"
+      isPlainText = true
+      mediaType = "text/plain"
+
+    [outputFormats.ai]
+      baseName = "ai"
       isPlainText = true
       mediaType = "text/plain"
 
