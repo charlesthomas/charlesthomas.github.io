@@ -27,11 +27,11 @@ clean-all: clean ## clean hugo binary & themes submodule
 	-rm hugo
 	-rm -rf themes/
 
-content/%.md: | hugo
+content/%.md: | hugo themes/blackburn/theme.toml
 	./hugo new $(*).md
 	code content/$(*).md
 
-content/post/%.md: | hugo
+content/post/%.md: | hugo themes/blackburn/theme.toml
 	./hugo new post/$(*).md
 	code content/post/$(*).md
 
@@ -48,15 +48,15 @@ hugo: ## install hugo v$(HUGO_VERSION) from github releases
 	tar -zxv hugo
 
 page: ## create a new page at the content root
-	read -p "title: " title; \
+	read -p "title (with caps & spaces): " title; \
 	make content/$${title}.md
 
 pipx: | ${HOMEBREW_PREFIX}/bin/pipx
 
 post: ## create a new post in content/post/
-	read -p "title: " title; \
-	title=$(echo $${title} | sed 's/ /-/g'); \
-	make content/post/$$(date +%F)-$${title}.md
+	read -p "title (with spaces & caps): " title; \
+	title=$$(echo $$title | sed 's/ /-/g'); \
+	make content/post/$$title.md
 
 serve: | hugo ## run server for testing
 	./hugo serve --disableFastRender
@@ -68,6 +68,7 @@ static-upload: | aws ## sync local static/ to s3
 	$(AWS_CMD) s3 sync --exclude .DS_Store $(STATIC_LOCAL) $(STATIC_S3)
 
 themes/blackburn/theme.toml:
+	git submodule init
 	git submodule update
 
 $(PIPX_VENV_ROOT)/awscli/bin/aws:
