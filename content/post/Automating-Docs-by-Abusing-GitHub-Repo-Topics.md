@@ -38,7 +38,8 @@ Repos can have multiple topics.
 It eventually occurred to me that I could give every home lab micro service repo the `homelab` topic, and then also give another for categorization.
 Since adding tags is supported by `gh` I could do this easily through a bash loop, and I wouldn't have to worry about updating their `.homelab-template.yaml` config.
 
-One thing that's already in the homelab-template is a category for [homepage](https://gethomepage.dev). Anything in my with a web UI shows up in my `homepage`
+One thing that's already in the homelab-template is a category for [homepage](https://gethomepage.dev).
+Anything in my k3s cluster with a web UI shows up in my `homepage`
  dashboard.
  I used those categories as a jumping off point.
  Additionally, I had tried to keep the `README` up to date manually at some point, and had categorized those things as well.
