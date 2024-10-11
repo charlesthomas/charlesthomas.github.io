@@ -4,6 +4,7 @@ date: 2024-10-04T19:45:43-04:00
 tags:
   - awk
   - bash
+  - homelab
   - kubernetes
   - yaml
   - yq
