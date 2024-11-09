@@ -12,6 +12,7 @@ User-agent: ClaudeBot
 User-agent: Claude-Web
 User-agent: cohere-ai
 User-agent: DataForSeoBot
+User-agent: DuckAssistBot
 User-agent: FacebookBot
 User-agent: Google-Extended
 User-agent: GoogleOther
