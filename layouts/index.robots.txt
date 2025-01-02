@@ -40,8 +40,3 @@ User-agent: VelenPublicWebCrawler
 User-agent: Webzio-Extended
 User-agent: YouBot
 Disallow: /
-
-User-agent: *
-Allow: /
-
-Sitemap: https://charlesthomas.dev/sitemap.xml

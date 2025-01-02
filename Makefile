@@ -1,5 +1,5 @@
 .DEFAULT_GOAL: build-and-serve
-.PHONY: aws build build-and-serve clean clean-all help install-hooks page pipx post serve static-download static-upload
+.PHONY: aws build build-and-serve clean clean-all help install-hooks layouts/index.robots.txt page pipx post serve static-download static-upload
 .SILENT: help page post
 
 AWS_CMD = aws --profile personal
@@ -58,6 +58,8 @@ post: ## create a new post in content/post/
 	title=$$(echo $$title | sed 's/ /-/g'); \
 	make content/post/$$title.md
 
+robots: layouts/index.robots.txt ## update robots.txt from https://github.com/ai-robots-txt/ai.robots.txt
+
 serve: | hugo ## run server for testing
 	./hugo serve --disableFastRender
 
@@ -66,6 +68,10 @@ static-download: | aws ## download static/ from s3
 
 static-upload: | aws ## sync local static/ to s3
 	$(AWS_CMD) s3 sync --exclude .DS_Store $(STATIC_LOCAL) $(STATIC_S3)
+
+
+layouts/index.robots.txt:
+	curl -sL https://github.com/ai-robots-txt/ai.robots.txt/releases/latest/download/robots.txt > $@
 
 themes/blackburn/theme.toml:
 	git submodule init
