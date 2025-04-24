@@ -32,10 +32,6 @@ title = "👨‍💻"
     name = " Helper Apps"
     weight = 4
     url = "/categories/helpers/"
-  [[menu.main]]
-    name = "🖥️ Thomas' Law"
-    weight = 5
-    url = "/law/"
 
 [outputs]
 home = ["HTML", "RSS", "humans", "robots", "ai"]
